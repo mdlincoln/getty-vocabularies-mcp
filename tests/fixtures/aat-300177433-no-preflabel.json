@@ -1,0 +1,132 @@
+{
+ "@context": "https://linked.art/ns/v1/linked-art.json",
+ "broader": [
+  {
+   "_label": "<paintings by material or technique>",
+   "id": "http://vocab.getty.edu/aat/300033701",
+   "type": "Type"
+  }
+ ],
+ "equivalent": [
+  {
+   "_label": "frescoes (paintings)",
+   "id": "http://www.wikidata.org/entity/Q22669139",
+   "type": "Type"
+  }
+ ],
+ "id": "http://vocab.getty.edu/aat/300177433",
+ "la:related_from_by": [
+  {
+   "classified_as": [
+    {
+     "_label": "created by - role",
+     "id": "http://vocab.getty.edu/aat/relationships/2325",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/relationships/2325-300177433-300386202",
+   "la:relates_to": {
+    "id": "http://vocab.getty.edu/aat/300386202"
+   },
+   "type": "la:Relationship"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "made of/require - material",
+     "id": "http://vocab.getty.edu/aat/relationships/2501",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/relationships/2501-300177433-300048627",
+   "la:relates_to": {
+    "id": "http://vocab.getty.edu/aat/300048627"
+   },
+   "type": "la:Relationship"
+  },
+  {
+   "classified_as": [
+    "http://vocab.getty.edu/aat/relationships/2501"
+   ],
+   "id": "http://vocab.getty.edu/aat/relationships/2501-300177433-300048626",
+   "la:relates_to": {
+    "id": "http://vocab.getty.edu/aat/300048626"
+   },
+   "type": "la:Relationship"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "provide context - things",
+     "id": "http://vocab.getty.edu/aat/relationships/2806",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/relationships/2806-300177433-300034464",
+   "la:relates_to": {
+    "id": "http://vocab.getty.edu/aat/300034464"
+   },
+   "type": "la:Relationship"
+  }
+ ],
+ "subject_of": [
+  {
+   "classified_as": [
+    {
+     "_label": "descriptive note",
+     "id": "http://vocab.getty.edu/aat/300435416",
+     "type": "Type"
+    }
+   ],
+   "content": "Paintings made by the technique of fresco painting, which is a mural painting technique in which permanent pigments, dispersed in water, are painted on freshly laid lime plaster.",
+   "id": "http://vocab.getty.edu/aat/scopeNote/33535",
+   "language": [
+    {
+     "_label": "en",
+     "id": "http://vocab.getty.edu/language/en",
+     "type": "Language"
+    }
+   ],
+   "type": "LinguisticObject"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "descriptive note",
+     "id": "http://vocab.getty.edu/aat/300435416",
+     "type": "Type"
+    }
+   ],
+   "content": "Schilderingen vervaardigd met hulp van de frescotechniek, een muurschildertechniek waarbij in water opgeloste, permanente pigmenten op een natte laag pleisterkalk worden aangebracht.",
+   "id": "http://vocab.getty.edu/aat/scopeNote/91245",
+   "language": [
+    {
+     "_label": "nl",
+     "id": "http://vocab.getty.edu/language/nl",
+     "type": "Language"
+    }
+   ],
+   "type": "LinguisticObject"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "descriptive note",
+     "id": "http://vocab.getty.edu/aat/300435416",
+     "type": "Type"
+    }
+   ],
+   "content": "Pinturas realizadas por la técnica de pintura al fresco, que es una técnica de pintura mural en que pigmentos permanentes dispersos en agua, son pintados en cal de yeso fresca.",
+   "id": "http://vocab.getty.edu/aat/scopeNote/71227",
+   "language": [
+    {
+     "_label": "es",
+     "id": "http://vocab.getty.edu/language/es",
+     "type": "Language"
+    }
+   ],
+   "type": "LinguisticObject"
+  }
+ ],
+ "type": "Type"
+}

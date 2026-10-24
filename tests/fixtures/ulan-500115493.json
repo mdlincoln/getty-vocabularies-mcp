@@ -1,0 +1,673 @@
+{
+ "@context": "https://linked.art/ns/v1/linked-art.json",
+ "_label": "Dürer, Albrecht",
+ "born": {
+  "id": "http://vocab.getty.edu/ulan/activity/birth/4000168516",
+  "timespan": {
+   "begin_of_the_begin": "1471-01-01T00:00:00",
+   "end_of_the_end": "1471-12-31T23:59:59",
+   "id": "http://vocab.getty.edu/ulan/time/birth/4000168516",
+   "type": "TimeSpan"
+  },
+  "took_place_at": [
+   {
+    "_label": "Nürnberg",
+    "id": "http://vocab.getty.edu/tgn/7004334",
+    "type": "Place"
+   }
+  ],
+  "type": "Birth"
+ },
+ "carried_out": [
+  {
+   "_label": "active (professional function)",
+   "classified_as": [
+    {
+     "_label": "active (professional function)",
+     "id": "http://vocab.getty.edu/aat/300393177",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/ulan/event/120265",
+   "timespan": {
+    "id": "http://vocab.getty.edu/ulan/time/active/120265",
+    "type": "TimeSpan"
+   },
+   "took_place_at": [
+    {
+     "_label": "Nürnberg",
+     "id": "http://vocab.getty.edu/tgn/7004334",
+     "type": "Place"
+    }
+   ],
+   "type": "Type"
+  },
+  {
+   "_label": "active (professional function)",
+   "classified_as": [
+    {
+     "_label": "active (professional function)",
+     "id": "http://vocab.getty.edu/aat/300393177",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/ulan/event/132634",
+   "timespan": {
+    "id": "http://vocab.getty.edu/ulan/time/active/132634",
+    "type": "TimeSpan"
+   },
+   "took_place_at": [
+    {
+     "_label": "Venezia",
+     "id": "http://vocab.getty.edu/tgn/7018159",
+     "type": "Place"
+    }
+   ],
+   "type": "Type"
+  }
+ ],
+ "classified_as": [
+  {
+   "_label": "authors",
+   "classified_as": [
+    {
+     "_label": "roles",
+     "id": "http://vocab.getty.edu/aat/300435108",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300025492",
+   "type": "Type"
+  },
+  {
+   "_label": "artists (visual artists)",
+   "classified_as": [
+    {
+     "_label": "roles",
+     "id": "http://vocab.getty.edu/aat/300435108",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300025103",
+   "type": "Type"
+  },
+  {
+   "_label": "designers",
+   "classified_as": [
+    {
+     "_label": "roles",
+     "id": "http://vocab.getty.edu/aat/300435108",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300025190",
+   "type": "Type"
+  },
+  {
+   "_label": "art theorists",
+   "classified_as": [
+    {
+     "_label": "roles",
+     "id": "http://vocab.getty.edu/aat/300435108",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300435134",
+   "type": "Type"
+  },
+  {
+   "_label": "engravers (printmakers)",
+   "classified_as": [
+    {
+     "_label": "roles",
+     "id": "http://vocab.getty.edu/aat/300435108",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300025165",
+   "type": "Type"
+  },
+  {
+   "_label": "mathematicians",
+   "classified_as": [
+    {
+     "_label": "roles",
+     "id": "http://vocab.getty.edu/aat/300435108",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300025786",
+   "type": "Type"
+  },
+  {
+   "_label": "woodcutters (printmakers)",
+   "classified_as": [
+    {
+     "_label": "roles",
+     "id": "http://vocab.getty.edu/aat/300435108",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300025178",
+   "type": "Type"
+  },
+  {
+   "_label": "draftsmen (artists)",
+   "classified_as": [
+    {
+     "_label": "roles",
+     "id": "http://vocab.getty.edu/aat/300435108",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300112172",
+   "type": "Type"
+  },
+  {
+   "_label": "jewelers",
+   "classified_as": [
+    {
+     "_label": "roles",
+     "id": "http://vocab.getty.edu/aat/300435108",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300025409",
+   "type": "Type"
+  },
+  {
+   "_label": "illustrators",
+   "classified_as": [
+    {
+     "_label": "roles",
+     "id": "http://vocab.getty.edu/aat/300435108",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300025123",
+   "type": "Type"
+  },
+  {
+   "_label": "portraitists",
+   "classified_as": [
+    {
+     "_label": "roles",
+     "id": "http://vocab.getty.edu/aat/300435108",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300237351",
+   "type": "Type"
+  },
+  {
+   "_label": "religious artists",
+   "classified_as": [
+    {
+     "_label": "roles",
+     "id": "http://vocab.getty.edu/aat/300435108",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300386220",
+   "type": "Type"
+  },
+  {
+   "_label": "painters (artists)",
+   "classified_as": [
+    {
+     "_label": "roles",
+     "id": "http://vocab.getty.edu/aat/300435108",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300025136",
+   "type": "Type"
+  },
+  {
+   "_label": "printmakers",
+   "classified_as": [
+    {
+     "_label": "roles",
+     "id": "http://vocab.getty.edu/aat/300435108",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300025164",
+   "type": "Type"
+  },
+  {
+   "_label": "theorists",
+   "classified_as": [
+    {
+     "_label": "roles",
+     "id": "http://vocab.getty.edu/aat/300435108",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300154308",
+   "type": "Type"
+  },
+  {
+   "_label": "Bavarian (culture or style)",
+   "classified_as": [
+    {
+     "_label": "nationality",
+     "id": "http://vocab.getty.edu/aat/300379842",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300385972",
+   "type": "Type"
+  },
+  {
+   "_label": "Austrian",
+   "classified_as": [
+    {
+     "_label": "nationality",
+     "id": "http://vocab.getty.edu/aat/300379842",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300111153",
+   "type": "Type"
+  },
+  {
+   "_label": "German (culture, style, period)",
+   "classified_as": [
+    {
+     "_label": "nationality",
+     "id": "http://vocab.getty.edu/aat/300379842",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300111192",
+   "type": "Type"
+  },
+  {
+   "_label": "male",
+   "classified_as": [
+    {
+     "_label": "sex role",
+     "id": "http://vocab.getty.edu/aat/300055147",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300189559",
+   "type": "Type"
+  }
+ ],
+ "died": {
+  "id": "http://vocab.getty.edu/ulan/activity/death/4000168516",
+  "timespan": {
+   "begin_of_the_begin": "1528-01-01T00:00:00",
+   "end_of_the_end": "1528-12-31T23:59:59",
+   "id": "http://vocab.getty.edu/ulan/time/death/4000168516",
+   "type": "TimeSpan"
+  },
+  "took_place_at": [
+   {
+    "_label": "Nürnberg",
+    "id": "http://vocab.getty.edu/tgn/7004334",
+    "type": "Place"
+   }
+  ],
+  "type": "Death"
+ },
+ "equivalent": [
+  {
+   "_label": "Dürer, Albrecht",
+   "id": "http://id.loc.gov/authorities/names/n79118011",
+   "type": "Person"
+  },
+  {
+   "_label": "Dürer, Albrecht",
+   "id": "https://wikidata.org/wiki/Q5580",
+   "type": "Person"
+  }
+ ],
+ "id": "http://vocab.getty.edu/ulan/500115493",
+ "identified_by": [
+  {
+   "classified_as": [
+    {
+     "_label": "names",
+     "id": "http://vocab.getty.edu/aat/300404650",
+     "type": "Type"
+    }
+   ],
+   "content": "Dürer, Albrecht",
+   "id": "http://vocab.getty.edu/ulan/term/1500065078-de",
+   "language": [
+    {
+     "_label": "de",
+     "id": "http://vocab.getty.edu/language/de",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "names",
+     "id": "http://vocab.getty.edu/aat/300404650",
+     "type": "Type"
+    },
+    {
+     "_label": "preferred term",
+     "id": "http://vocab.getty.edu/aat/300404670",
+     "type": "Type"
+    }
+   ],
+   "content": "Dürer, Albrecht",
+   "id": "http://vocab.getty.edu/ulan/term/1500065078-en",
+   "language": [
+    {
+     "_label": "en",
+     "id": "http://vocab.getty.edu/language/en",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "names",
+     "id": "http://vocab.getty.edu/aat/300404650",
+     "type": "Type"
+    }
+   ],
+   "content": "Dürer, Albrecht",
+   "id": "http://vocab.getty.edu/ulan/term/1500065078-nl",
+   "language": [
+    {
+     "_label": "nl",
+     "id": "http://vocab.getty.edu/language/nl",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "names",
+     "id": "http://vocab.getty.edu/aat/300404650",
+     "type": "Type"
+    }
+   ],
+   "content": "דירר, אלברכט",
+   "id": "http://vocab.getty.edu/ulan/term/1501223470-he",
+   "language": [
+    {
+     "_label": "he",
+     "id": "http://vocab.getty.edu/language/he",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "names",
+     "id": "http://vocab.getty.edu/aat/300404650",
+     "type": "Type"
+    },
+    {
+     "_label": "Historic",
+     "id": "http://vocab.getty.edu/historic/historic",
+     "type": "Type"
+    }
+   ],
+   "content": "Türer, Albrecht",
+   "id": "http://vocab.getty.edu/ulan/term/1500816255",
+   "type": "Name"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "names",
+     "id": "http://vocab.getty.edu/aat/300404650",
+     "type": "Type"
+    }
+   ],
+   "content": "Albrecht Dürer",
+   "id": "http://vocab.getty.edu/ulan/term/1500065071-de",
+   "language": [
+    {
+     "_label": "de",
+     "id": "http://vocab.getty.edu/language/de",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "names",
+     "id": "http://vocab.getty.edu/aat/300404650",
+     "type": "Type"
+    }
+   ],
+   "content": "Durer, Albrecht",
+   "id": "http://vocab.getty.edu/ulan/term/1500065079-en",
+   "language": [
+    {
+     "_label": "en",
+     "id": "http://vocab.getty.edu/language/en",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "names",
+     "id": "http://vocab.getty.edu/aat/300404650",
+     "type": "Type"
+    }
+   ],
+   "content": "Dürero, Alberto‏",
+   "id": "http://vocab.getty.edu/ulan/term/1500816094-it",
+   "language": [
+    {
+     "_label": "it",
+     "id": "http://vocab.getty.edu/language/it",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "Getty Vocabularies Identifier",
+     "id": "http://vocab.getty.edu/aat/300404629",
+     "type": "Type"
+    }
+   ],
+   "content": "500115493",
+   "id": "http://vocab.getty.edu/ulan/500115493",
+   "type": "Identifier"
+  }
+ ],
+ "la:related_from_by": [
+  {
+   "classified_as": [
+    {
+     "_label": "teacher of - person",
+     "id": "http://vocab.getty.edu/ulan/relationships/1101",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/ulan/relationships/1101-500115493-500024290",
+   "la:relates_to": {
+    "id": "http://vocab.getty.edu/ulan/500024290"
+   },
+   "type": "la:Relationship"
+  },
+  {
+   "classified_as": [
+    "http://vocab.getty.edu/ulan/relationships/1101"
+   ],
+   "id": "http://vocab.getty.edu/ulan/relationships/1101-500115493-500101472",
+   "la:relates_to": {
+    "id": "http://vocab.getty.edu/ulan/500101472"
+   },
+   "type": "la:Relationship"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "student of - person",
+     "id": "http://vocab.getty.edu/ulan/relationships/1102",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/ulan/relationships/1102-500115493-500019749",
+   "la:relates_to": {
+    "id": "http://vocab.getty.edu/ulan/500019749"
+   },
+   "type": "la:Relationship"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "apprentice of - person",
+     "id": "http://vocab.getty.edu/ulan/relationships/1105",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/ulan/relationships/1105-500115493-500031446",
+   "la:relates_to": {
+    "id": "http://vocab.getty.edu/ulan/500031446"
+   },
+   "type": "la:Relationship"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "apprentice was - person",
+     "id": "http://vocab.getty.edu/ulan/relationships/1106",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/ulan/relationships/1106-500115493-500013506",
+   "la:relates_to": {
+    "id": "http://vocab.getty.edu/ulan/500013506"
+   },
+   "type": "la:Relationship"
+  },
+  {
+   "classified_as": [
+    "http://vocab.getty.edu/ulan/relationships/1106"
+   ],
+   "id": "http://vocab.getty.edu/ulan/relationships/1106-500115493-500002241",
+   "la:relates_to": {
+    "id": "http://vocab.getty.edu/ulan/500002241"
+   },
+   "type": "la:Relationship"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "patron was - person",
+     "id": "http://vocab.getty.edu/ulan/relationships/1202",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/ulan/relationships/1202-500115493-500260809",
+   "la:relates_to": {
+    "id": "http://vocab.getty.edu/ulan/500260809"
+   },
+   "type": "la:Relationship"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "collaborated with - person",
+     "id": "http://vocab.getty.edu/ulan/relationships/1303",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/ulan/relationships/1303-500115493-500084340",
+   "la:relates_to": {
+    "id": "http://vocab.getty.edu/ulan/500084340"
+   },
+   "type": "la:Relationship"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "assisted by - person",
+     "id": "http://vocab.getty.edu/ulan/relationships/1308",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/ulan/relationships/1308-500115493-500006353",
+   "la:relates_to": {
+    "id": "http://vocab.getty.edu/ulan/500006353"
+   },
+   "type": "la:Relationship"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "sibling of - person",
+     "id": "http://vocab.getty.edu/ulan/relationships/1501",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/ulan/relationships/1501-500115493-500356338",
+   "la:relates_to": {
+    "id": "http://vocab.getty.edu/ulan/500356338"
+   },
+   "type": "la:Relationship"
+  }
+ ],
+ "referred_to_by": [
+  {
+   "classified_as": [
+    {
+     "_label": "biographies (literary genre)",
+     "id": "http://vocab.getty.edu/aat/300080102",
+     "type": "Type"
+    },
+    {
+     "_label": "brief texts",
+     "id": "http://vocab.getty.edu/aat/300418049",
+     "type": "Type"
+    }
+   ],
+   "content": "German printmaker and painter, 1471-1528",
+   "id": "http://vocab.getty.edu/ulan/bio/4000168516",
+   "type": "LinguisticObject"
+  }
+ ],
+ "subject_of": [
+  {
+   "classified_as": [
+    {
+     "_label": "descriptive note",
+     "id": "http://vocab.getty.edu/aat/300435416",
+     "type": "Type"
+    }
+   ],
+   "content": "The son of a Nuremburg goldsmith of the same name, Albrecht Dürer was a prolific, popular, and widely influential artist. He studied in Venice and brought Italianate painting styles and forms to Germany. He is perhaps best known for having made great advancements in the techniques and art of printmaking.",
+   "id": "http://vocab.getty.edu/ulan/scopeNote/52112",
+   "language": [
+    {
+     "_label": "en",
+     "id": "http://vocab.getty.edu/language/en",
+     "type": "Language"
+    }
+   ],
+   "type": "LinguisticObject"
+  }
+ ],
+ "type": "Person"
+}

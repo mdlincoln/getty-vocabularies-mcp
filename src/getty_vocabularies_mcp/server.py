@@ -57,6 +57,34 @@ _HEADERS = {
     "Accept":     "application/json",
 }
 
+# Classification tags the LOD records use to say what an entry means.
+# Getty serves Linked Art with short keys, so a term's role is never visible
+# from its key alone — it is spelled out in classified_as.
+AAT_PREFERRED_TERM   = "http://vocab.getty.edu/aat/300404670"
+AAT_SCOPE_NOTE       = "http://vocab.getty.edu/aat/300435416"
+AAT_PREFERRED_PARENT = "http://vocab.getty.edu/aat/300449152"
+AAT_PLACE_TYPE       = "http://vocab.getty.edu/aat/300435109"
+AAT_ROLE             = "http://vocab.getty.edu/aat/300435108"
+AAT_NATIONALITY      = "http://vocab.getty.edu/aat/300379842"
+AAT_SEX              = "http://vocab.getty.edu/aat/300055147"
+AAT_BIOGRAPHY        = "http://vocab.getty.edu/aat/300080102"
+CRM_COORDINATES      = "crm:E47_Spatial_Coordinates"
+
+# Array caps. A single ULAN record carries ~120 names and ~170 KB of JSON,
+# and every one of these lists feeds straight into an agent's context.
+ALT_LABEL_CAP  = 25
+BROADER_CAP    = 25
+NARROWER_CAP   = 25
+PLACE_TYPE_CAP = 15
+ROLE_CAP       = 15
+NATIONALITY_CAP = 10
+ACTIVE_IN_CAP  = 10
+RELATED_CAP    = 10
+EQUIVALENT_CAP = 5
+
+# Record fetches allowed for one get_getty_hierarchy call, root included.
+HIERARCHY_FETCH_BUDGET = 20
+
 # ---------------------------------------------------------------------------
 # Internal helpers
 # ---------------------------------------------------------------------------
@@ -83,17 +111,35 @@ def _normalise_uri(id_or_uri: str, default_vocab: str = "aat") -> tuple[str, str
     return uri, _detect_vocab(uri)
 
 
+def _lod_url(uri: str) -> str:
+    """The .json LOD URL for a canonical Getty URI."""
+    return uri.replace("http://", "https://").rstrip("/") + ".json"
+
+
+def _http_get_json(url: str):
+    """
+    The one function that talks to the network for LOD records.
+
+    Isolated so the test suite can serve fixtures from disk instead: every
+    parser test monkeypatches this and nothing else.
+    """
+    response = requests.get(url, headers=_HEADERS, timeout=15)
+    response.raise_for_status()
+    return response.json()
+
+
 def _lod_fetch(uri: str) -> dict:
     """
-    Fetch a Getty LOD record as JSON-LD by appending .json to the URI.
+    Fetch a Getty LOD record as Linked Art JSON by appending .json to the URI.
     Uses https:// for the actual request (Getty redirects http:// to https://).
+
+    Returns {"data": <payload>, "url": <fetched url>} or an error envelope
+    carrying "error", "type" and "traceback". The error key is part of the
+    tool contract, so failures are never raised to the caller.
     """
-    safe_uri = uri.replace("http://", "https://")
-    url = safe_uri.rstrip("/") + ".json"
+    url = _lod_url(uri)
     try:
-        response = requests.get(url, headers=_HEADERS, timeout=15)
-        response.raise_for_status()
-        return {"data": response.json()}
+        return {"data": _http_get_json(url), "url": url}
     except Exception as e:
         return {
             "error": str(e),
@@ -150,148 +196,457 @@ def _reconcile_search(query: str, vocab_type: str, limit: int) -> dict:
         }
 
 
-def _parse_lod_record(data: list, uri: str) -> dict:
+def _excerpt(value, limit: int = 200) -> str:
     """
-    Parse a Getty JSON-LD graph (list of nodes) into a structured record dict.
-    Extracts prefLabel, altLabels, scopeNote, broader, narrower, related.
+    A short, safe rendering of a payload for error reporting.
+
+    The records run to ~170 KB; echoing one into an error dict floods an
+    agent's context with a payload it cannot use. The result is always
+    strictly shorter than `limit`.
     """
-    SKOS      = "http://www.w3.org/2004/02/skos/core#"
-    GVP       = "http://vocab.getty.edu/ontology#"
-    SKOSXL    = "http://www.w3.org/2008/05/skos-xl#"
-    RDF_TYPE  = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    try:
+        text = json.dumps(value, ensure_ascii=False)
+    except (TypeError, ValueError):
+        text = repr(value)
+    return text if len(text) < limit else text[: limit - 2] + "…"
 
-    # Normalise URI for node matching (try both http and https)
-    canon    = uri.rstrip("/").replace("https://", "http://")
-    canon_s  = uri.rstrip("/").replace("http://", "https://")
 
-    # Find the primary node
-    primary = None
-    for node in data:
-        node_id = node.get("@id", "").rstrip("/")
-        if node_id in (canon, canon_s):
-            primary = node
-            break
+def _as_list(value) -> list:
+    """The value as a list, for payload keys that may be absent or scalar."""
+    if isinstance(value, list):
+        return value
+    if value is None:
+        return []
+    return [value]
 
-    if primary is None:
-        return {"error": f"Could not find primary node for URI {uri} in LOD response"}
 
-    def _first_en(values):
-        """Return first English (or untagged) string value from a JSON-LD value list."""
-        if not values:
-            return ""
-        for v in values:
-            if isinstance(v, dict):
-                lang = v.get("@language", "")
-                val  = v.get("@value", "")
-                if lang in ("en", "en-us", "") and val:
-                    return val
-            elif isinstance(v, str):
-                return v
+def _ref_uri(entry) -> str:
+    """The canonical http:// URI a reference entry carries, or ""."""
+    if isinstance(entry, str):
+        value = entry
+    elif isinstance(entry, dict):
+        value = entry.get("id")
+    else:
         return ""
+    if not isinstance(value, str) or not value.strip():
+        return ""
+    return value.strip().rstrip("/").replace("https://", "http://")
 
-    def _all_en(values):
-        """Return all English (or untagged) string values from a JSON-LD value list."""
-        results = []
-        if not values:
-            return results
-        for v in values:
-            if isinstance(v, dict):
-                lang = v.get("@language", "")
-                val  = v.get("@value", "")
-                if lang in ("en", "en-us", "") and val and val not in results:
-                    results.append(val)
-            elif isinstance(v, str) and v not in results:
-                results.append(v)
-        return results
 
-    def _uri_list(values):
-        """Extract list of @id URIs from a JSON-LD value list."""
-        uris = []
-        for v in values:
-            if isinstance(v, dict) and "@id" in v:
-                uris.append(v["@id"].rstrip("/"))
-        return uris
+def _classification_ids(entry) -> list:
+    """
+    The classification ids an entry carries, normalized to http:// URIs.
 
-    record = {
-        "id":        canon.split("/")[-1],
-        "uri":       canon,
-        "vocab":     _detect_vocab(canon),
-        "vocabName": VOCAB_NAMES.get(_detect_vocab(canon), ""),
-    }
+    Getty serves classifications in three shapes — [{"id": …}], a bare
+    "http://…" string, and a list holding either — so every classification
+    test in this module goes through here. Normalizing is what keeps a bare
+    "https://…" string comparable with the tag constants below.
+    """
+    if isinstance(entry, (list, tuple)):
+        ids = []
+        for item in entry:
+            ids.extend(_classification_ids(item))
+        return ids
+    if isinstance(entry, str):
+        uri = _ref_uri(entry)
+        return [uri] if uri else []
+    if not isinstance(entry, dict):
+        return []
+    ids = []
+    for item in _as_list(entry.get("classified_as")):
+        uri = _ref_uri(item)
+        if uri:
+            ids.append(uri)
+    return ids
 
-    # Preferred label — try gvp:prefLabelGVP value chain first, then skos:prefLabel
-    pref = ""
-    gvp_label_refs = _uri_list(primary.get(f"{GVP}prefLabelGVP", []))
-    for ref_uri in gvp_label_refs:
-        for node in data:
-            if node.get("@id", "").rstrip("/") == ref_uri:
-                lf = _first_en(node.get(f"{SKOSXL}literalForm", []))
-                if lf:
-                    pref = lf
-                    break
-        if pref:
+
+def _classified_as(entry, wanted: str) -> bool:
+    """Whether an entry is tagged with a given classification."""
+    return wanted in _classification_ids(entry)
+
+
+def _term_entry(entry) -> dict:
+    """A {id, label, uri} entry for an inline term reference, or {}."""
+    uri = _ref_uri(entry)
+    if not uri:
+        return {}
+    term = {"id": uri.rsplit("/", 1)[-1]}
+    label = entry.get("_label") if isinstance(entry, dict) else None
+    if isinstance(label, str) and label.strip():
+        term["label"] = label.strip()
+    term["uri"] = uri
+    return term
+
+
+def _term_entries(entries, cap: int) -> list:
+    """{id, label, uri} entries for a reference list, capped."""
+    terms = []
+    for entry in _as_list(entries):
+        term = _term_entry(entry)
+        if not term:
+            continue
+        terms.append(term)
+        if len(terms) >= cap:
             break
-    if not pref:
-        pref = _first_en(primary.get(f"{SKOS}prefLabel", []))
-    if pref:
-        record["prefLabel"] = pref
+    return terms
 
-    # Alt labels
-    alts = _all_en(primary.get(f"{SKOS}altLabel", []))
-    if alts:
-        record["altLabels"] = alts
 
-    # Scope note
-    notes = _all_en(primary.get(f"{SKOS}scopeNote", []))
-    if notes:
-        record["scopeNote"] = notes[0] if len(notes) == 1 else notes
+def _classified_terms(node, wanted: str, cap: int) -> list:
+    """{id, label, uri} entries for classified_as entries carrying a tag."""
+    terms = []
+    for entry in _as_list(node.get("classified_as")):
+        if not isinstance(entry, dict) or not _classified_as(entry, wanted):
+            continue
+        term = _term_entry(entry)
+        if not term:
+            continue
+        terms.append(term)
+        if len(terms) >= cap:
+            break
+    return terms
 
-    # Record types
-    types = []
-    for t in _uri_list(primary.get("@type", [])):
-        short = t.split("#")[-1].split("/")[-1]
-        if short and short not in ("Concept", "Resource") and short not in types:
-            types.append(short)
-    if types:
-        record["recordTypes"] = types
 
-    # Broader / narrower / related — resolve labels from graph
-    def _resolve_related(uri_list):
-        resolved = []
-        for rel_uri in uri_list:
-            rel_label = ""
-            for node in data:
-                if node.get("@id", "").rstrip("/") == rel_uri.rstrip("/"):
-                    # Try prefLabelGVP chain
-                    for ref in _uri_list(node.get(f"{GVP}prefLabelGVP", [])):
-                        for n2 in data:
-                            if n2.get("@id", "").rstrip("/") == ref:
-                                lf = _first_en(n2.get(f"{SKOSXL}literalForm", []))
-                                if lf:
-                                    rel_label = lf
-                                    break
-                        if rel_label:
-                            break
-                    if not rel_label:
-                        rel_label = _first_en(node.get(f"{SKOS}prefLabel", []))
-                    break
-            resolved.append({
-                "id":    rel_uri.rstrip("/").split("/")[-1],
-                "label": rel_label,
-                "uri":   rel_uri,
-            })
-        return resolved
+def _names(node) -> list:
+    """
+    The record's Name entries.
 
-    broader_uris  = _uri_list(primary.get(f"{SKOS}broader", []))
-    narrower_uris = _uri_list(primary.get(f"{SKOS}narrower", []))[:25]
-    related_uris  = _uri_list(primary.get(f"{SKOS}related", []))[:10]
+    Identifier entries (the numeric Getty id) and the TGN geometry node are
+    not names: including them would put "300177433" in the alt labels.
+    """
+    names = []
+    for entry in _as_list(node.get("identified_by")):
+        if not isinstance(entry, dict):
+            continue
+        if entry.get("type") not in (None, "Name"):
+            continue
+        content = entry.get("content")
+        if isinstance(content, str) and content.strip():
+            names.append(entry)
+    return names
 
-    if broader_uris:
-        record["broaderTerms"]  = _resolve_related(broader_uris)
-    if narrower_uris:
-        record["narrowerTerms"] = _resolve_related(narrower_uris)
-    if related_uris:
-        record["relatedTerms"]  = _resolve_related(related_uris)
+
+def _language_tag(entry) -> str:
+    """The language subtag of an entry, lowercased; "" when untagged."""
+    for lang in _as_list(entry.get("language") if isinstance(entry, dict) else None):
+        uri = _ref_uri(lang)
+        if uri:
+            return uri.rsplit("/", 1)[-1].lower()
+    return ""
+
+
+def _qualified_form(name) -> str:
+    """
+    Getty's qualified display form of a name, when the payload carries one.
+
+    The preferred name of aat/300177433 has content "frescoes" and the
+    qualified heading "frescoes (paintings)" in alternative[0]; AAT guide
+    terms keep their angle brackets there too ("<paintings by material or
+    technique>"), which is the authorized form catalogers cite.
+    """
+    for alt in _as_list(name.get("alternative") if isinstance(name, dict) else None):
+        if isinstance(alt, dict):
+            content = alt.get("content")
+            if isinstance(content, str) and content.strip():
+                return content.strip()
+    return ""
+
+
+def _preferred_label(node, names) -> tuple:
+    """
+    The record's display label and the Name entry it came from.
+
+    Preference order: the name tagged "preferred term", in its qualified
+    form; the top-level _label; the first name.
+    """
+    for name in names:
+        if _classified_as(name, AAT_PREFERRED_TERM):
+            return (_qualified_form(name) or name["content"].strip()), name
+    label = node.get("_label")
+    if isinstance(label, str) and label.strip():
+        return label.strip(), None
+    if names:
+        return (_qualified_form(names[0]) or names[0]["content"].strip()), names[0]
+    return "", None
+
+
+def _alt_labels(names, chosen, pref_label) -> list:
+    """
+    Variant names, untagged/English first, other languages tagged.
+
+    A name whose spelling matches the preferred label is not a variant, so
+    it is skipped: the preferred label may be the qualified form of one
+    name while another name carries the same text verbatim, and repeating
+    the heading under altLabels would be noise. Returns the full list
+    uncapped; the caller decides what to keep and how many there were.
+    """
+    preferred, others = [], []
+    seen = set()
+    for name in names:
+        if name is chosen:
+            continue
+        content = name["content"].strip()
+        if not content or content in seen or content == pref_label:
+            continue
+        seen.add(content)
+        tag = _language_tag(name)
+        if tag in ("", "en"):
+            preferred.append(content)
+            continue
+        label = f"{content} ({tag})"
+        if label in seen:
+            continue
+        seen.add(label)
+        others.append(label)
+    return preferred + others
+
+
+def _scope_note(node) -> tuple:
+    """(text, language) of the record's scope note, or ("", "")."""
+    candidates = []
+    for entry in _as_list(node.get("subject_of")):
+        if not isinstance(entry, dict) or not _classified_as(entry, AAT_SCOPE_NOTE):
+            continue
+        content = entry.get("content")
+        if isinstance(content, str) and content.strip():
+            candidates.append((_language_tag(entry), content.strip()))
+    for tag, text in candidates:
+        if tag == "en":
+            return text, tag
+    if candidates:
+        return candidates[0][1], candidates[0][0]
+    return "", ""
+
+
+def _relationship_terms(node) -> list:
+    """
+    Incoming relationships: other records that relate to this one.
+
+    Getty inlines these as la:related_from_by, each naming its target in
+    la:relates_to and its relationship type in classified_as. The type is
+    sometimes a labelled entry and sometimes a bare URI, so labels are
+    collected first and bare references take their label from a sibling.
+    """
+    rels = [r for r in _as_list(node.get("la:related_from_by")) if isinstance(r, dict)]
+    labels = {}
+    for rel in rels:
+        for entry in _as_list(rel.get("classified_as")):
+            if isinstance(entry, dict):
+                uri = _ref_uri(entry)
+                label = entry.get("_label")
+                if uri and isinstance(label, str) and label.strip():
+                    labels.setdefault(uri, label.strip())
+
+    terms = []
+    for rel in rels:
+        uri = _ref_uri(rel.get("la:relates_to"))
+        if not uri:
+            continue
+        term = {"id": uri.rsplit("/", 1)[-1]}
+        relationship_ids = _classification_ids(rel)
+        relationship = labels.get(relationship_ids[0], "") if relationship_ids else ""
+        if relationship:
+            term["relationship"] = relationship
+        term["uri"] = uri
+        terms.append(term)
+        if len(terms) >= RELATED_CAP:
+            break
+    return terms
+
+
+def _coordinates(node) -> str:
+    """The TGN geometry node's coordinate string, or ""."""
+    for entry in _as_list(node.get("identified_by")):
+        if isinstance(entry, dict) and entry.get("type") == CRM_COORDINATES:
+            value = entry.get("value")
+            if isinstance(value, str) and value.strip():
+                return value.strip()
+    return ""
+
+
+def _event_year(event) -> int:
+    """The year an event's timespan starts, or 0."""
+    timespan = event.get("timespan") if isinstance(event, dict) else None
+    if not isinstance(timespan, dict):
+        return 0
+    for key in ("begin_of_the_begin", "end_of_the_end", "begin_of_the_end", "end_of_the_begin"):
+        value = timespan.get(key)
+        if isinstance(value, str) and len(value) >= 4 and value[:4].isdigit():
+            return int(value[:4])
+    return 0
+
+
+def _event_place(event) -> str:
+    """The label of the place an event took place at, or ""."""
+    places = _as_list(event.get("took_place_at") if isinstance(event, dict) else None)
+    for place in places:
+        if isinstance(place, dict):
+            label = place.get("_label")
+            if isinstance(label, str) and label.strip():
+                return label.strip()
+    return ""
+
+
+def _active_in(node) -> list:
+    """Places the record is recorded as active in, deduped, in payload order."""
+    terms, seen = [], set()
+    for event in _as_list(node.get("carried_out")):
+        for place in _as_list(event.get("took_place_at") if isinstance(event, dict) else None):
+            term = _term_entry(place)
+            key = term.get("uri") or term.get("label")
+            if not key or key in seen:
+                continue
+            seen.add(key)
+            terms.append(term)
+            if len(terms) >= ACTIVE_IN_CAP:
+                return terms
+    return terms
+
+
+def _biography(node) -> str:
+    """The record's brief biography text, or ""."""
+    for entry in _as_list(node.get("referred_to_by")):
+        if isinstance(entry, dict) and _classified_as(entry, AAT_BIOGRAPHY):
+            content = entry.get("content")
+            if isinstance(content, str) and content.strip():
+                return content.strip()
+    return ""
+
+
+def _equivalent_ids(node) -> list:
+    """Equivalents in other vocabularies (Wikidata, LOC), ids only, capped."""
+    ids = []
+    for entry in _as_list(node.get("equivalent")):
+        if isinstance(entry, str):
+            value = entry
+        elif isinstance(entry, dict):
+            value = entry.get("id")
+        else:
+            continue
+        if isinstance(value, str) and value.strip() and value.strip() not in ids:
+            ids.append(value.strip())
+        if len(ids) >= EQUIVALENT_CAP:
+            break
+    return ids
+
+
+def _parse_linked_art(node: dict, uri: str) -> dict:
+    """
+    Parse one Getty Linked Art record into the structured record dict the
+    tools return.
+
+    The endpoint serves a single object with short keys (id, type, _label,
+    identified_by, subject_of, …) rather than the RDF graph list it served
+    when this server was written. Preference order and per-vocabulary rules
+    live in the helpers above; anything a record does not carry is omitted
+    rather than emitted as null.
+    """
+    canon = uri.rstrip("/").replace("https://", "http://")
+    node_id = _ref_uri(node)
+    if node_id != canon:
+        return {
+            "error": f"LOD response id does not match the requested URI {canon}",
+            "excerpt": _excerpt(node_id or node),
+        }
+
+    vocab = _detect_vocab(canon)
+    record = {
+        "id":        canon.rsplit("/", 1)[-1],
+        "uri":       canon,
+        "vocab":     vocab,
+    }
+    if VOCAB_NAMES.get(vocab):
+        record["vocabName"] = VOCAB_NAMES[vocab]
+
+    record_type = node.get("type")
+    if isinstance(record_type, str) and record_type.strip():
+        record["recordType"] = record_type.strip()
+
+    names = _names(node)
+    pref_label, chosen = _preferred_label(node, names)
+    if pref_label:
+        record["prefLabel"] = pref_label
+    alt_labels = _alt_labels(names, chosen, pref_label)
+    if alt_labels:
+        record["altLabels"] = alt_labels[:ALT_LABEL_CAP]
+        record["altLabelCount"] = len(alt_labels)
+
+    scope_note, scope_language = _scope_note(node)
+    if scope_note:
+        record["scopeNote"] = scope_note
+        if scope_language:
+            record["scopeNoteLanguage"] = scope_language
+
+    # TGN puts parents in part_of and does not inline child places at all;
+    # AAT carries both directions inline.
+    broader = []
+    broader_source = node.get("part_of") if vocab == "tgn" else node.get("broader")
+    for entry in _as_list(broader_source):
+        term = _term_entry(entry)
+        if not term:
+            continue
+        if vocab == "tgn" and _classified_as(entry, AAT_PREFERRED_PARENT):
+            term["preferredParent"] = True
+        broader.append(term)
+        if len(broader) >= BROADER_CAP:
+            break
+    if vocab == "tgn":
+        record["hierarchyNote"] = (
+            "TGN parent places are inlined as broaderTerms (from part_of). "
+            "The LOD endpoint does not inline child places, so narrowerTerms "
+            "is absent for places — browse the full hierarchy at "
+            f"https://vocab.getty.edu/hier/tgn/{record['id']}"
+        )
+    if broader:
+        record["broaderTerms"] = broader
+
+    if vocab != "tgn":
+        narrower = _term_entries(node.get("narrower"), NARROWER_CAP)
+        if narrower:
+            record["narrowerTerms"] = narrower
+
+    related = _relationship_terms(node)
+    if related:
+        record["relatedTerms"] = related
+
+    if vocab == "tgn":
+        place_types = _classified_terms(node, AAT_PLACE_TYPE, PLACE_TYPE_CAP)
+        if place_types:
+            record["placeTypes"] = place_types
+        coordinates = _coordinates(node)
+        if coordinates:
+            record["coordinates"] = coordinates
+
+    if vocab == "ulan":
+        roles = _classified_terms(node, AAT_ROLE, ROLE_CAP)
+        if roles:
+            record["roles"] = roles
+        nationalities = _classified_terms(node, AAT_NATIONALITY, NATIONALITY_CAP)
+        if nationalities:
+            record["nationalities"] = nationalities
+        sex = _classified_terms(node, AAT_SEX, 1)
+        if sex:
+            record["sex"] = sex[0]
+        born, died = node.get("born"), node.get("died")
+        birth_year, death_year = _event_year(born), _event_year(died)
+        if birth_year:
+            record["birthYear"] = birth_year
+        if death_year:
+            record["deathYear"] = death_year
+        birth_place, death_place = _event_place(born), _event_place(died)
+        if birth_place:
+            record["birthPlace"] = birth_place
+        if death_place:
+            record["deathPlace"] = death_place
+        active_in = _active_in(node)
+        if active_in:
+            record["activeIn"] = active_in
+        biography = _biography(node)
+        if biography:
+            record["biography"] = biography
+
+    equivalent = _equivalent_ids(node)
+    if equivalent:
+        record["equivalent"] = equivalent
 
     return record
 
@@ -360,27 +715,55 @@ def get_getty_record(id_or_uri: str) -> dict:
 
     Returns
     -------
-    dict with: id, uri, vocab, vocabName, prefLabel, altLabels, scopeNote,
-    recordTypes, broaderTerms, narrowerTerms, relatedTerms.
-    Fields absent from the record are omitted.
+    dict with, when the record carries them: id, uri, vocab, vocabName,
+    recordType, prefLabel, altLabels, altLabelCount, scopeNote,
+    scopeNoteLanguage, broaderTerms, narrowerTerms, relatedTerms,
+    equivalent. TGN records add placeTypes, coordinates and hierarchyNote;
+    ULAN records add roles, nationalities, sex, birthYear, deathYear,
+    birthPlace, deathPlace, activeIn and biography. Fields a record does not
+    carry are omitted.
+
+    Term entries carry id, label and uri — except the relatedTerms entries,
+    which carry id, uri and relationship (see below): Getty serves no label
+    for the related record itself.
 
     Notes
     -----
+    Getty serves these records as Linked Art. The preferred label is the name
+    tagged "preferred term" in its Getty qualified form, so AAT guide terms
+    keep their angle brackets ("<paintings by material or technique>").
+
+    relatedTerms lists *incoming* relationships — other records that relate
+    to this one, with the relationship label served for them. Getty does not
+    serve outgoing relationships in this payload.
+
+    TGN builds broaderTerms from part_of (the parent tagged "preferred
+    parent" carries preferredParent: true) and does not inline child places,
+    so TGN records carry no narrowerTerms.
+
     Works with AAT, TGN, and ULAN. CONA and IA records may not return
     full structured data as they are not fully available as LOD.
     """
-    uri, vocab = _normalise_uri(id_or_uri)
+    uri, _vocab = _normalise_uri(id_or_uri)
     result = _lod_fetch(uri)
     if "error" in result:
         return result
-    data = result.get("data", [])
-    if not isinstance(data, list):
-        return {"error": "Unexpected LOD response format", "data": data}
-    record = _parse_lod_record(data, uri)
-    if not record.get("prefLabel") and "error" not in record:
+    data = result.get("data")
+    if not isinstance(data, dict):
+        # Never echo the payload itself: records run to ~170 KB.
+        return {
+            "error": "Unexpected LOD response format",
+            "url": result.get("url", _lod_url(uri)),
+            "shape": type(data).__name__,
+            "excerpt": _excerpt(data),
+        }
+    record = _parse_linked_art(data, uri)
+    if "error" not in record and not record.get("prefLabel"):
         record["warning"] = (
-            f"No data found for URI {uri}. "
-            "Verify the ID is correct and the vocabulary prefix matches."
+            f"No preferred label resolved for URI {uri}: the record carries no "
+            "preferred-term name, no _label and no name entry. Verify the ID and "
+            "the vocabulary prefix, or check that the record is served as "
+            "Linked Art."
         )
     return record
 
@@ -401,8 +784,11 @@ def get_getty_scope_note(id_or_uri: str) -> dict:
 
     Returns
     -------
-    dict with: id, uri, vocab, prefLabel, scopeNote.
-    If no scope note exists, a 'message' key explains this.
+    dict with: id, uri, vocab, prefLabel, scopeNote, and scopeNoteLanguage
+    when the record tags its note with a language. If no scope note exists,
+    a 'message' key explains this. A record that resolved no preferred label
+    passes its 'warning' through, so a missing note is not mistaken for a
+    wrong URI.
 
     Notes
     -----
@@ -419,17 +805,45 @@ def get_getty_scope_note(id_or_uri: str) -> dict:
     }
     if "scopeNote" in record:
         result["scopeNote"] = record["scopeNote"]
+        if "scopeNoteLanguage" in record:
+            result["scopeNoteLanguage"] = record["scopeNoteLanguage"]
     else:
         result["message"] = (
             "No scope note found for this record. "
             "Scope notes are most consistently present in AAT records."
         )
+    if "warning" in record:
+        result["warning"] = record["warning"]
     return result
 
 
 # ---------------------------------------------------------------------------
 # Tool 4 — Hierarchy navigation
 # ---------------------------------------------------------------------------
+
+def _walk_fetch(uri: str, walk: dict):
+    """
+    Fetch and parse one record for the depth-2 hierarchy walk, charging the
+    shared fetch budget.
+
+    Returns the parsed record, or None when the budget is spent or the
+    record cannot be fetched and parsed — a hierarchy is built from what is
+    reachable, so one unreachable term never fails the whole result.
+    """
+    if walk["remaining"] <= 0:
+        walk["stopped"] = True
+        return None
+    walk["remaining"] -= 1
+    walk["fetches"] += 1
+    result = _lod_fetch(uri)
+    if "error" in result:
+        return None
+    data = result.get("data")
+    if not isinstance(data, dict):
+        return None
+    record = _parse_linked_art(data, uri)
+    return None if "error" in record else record
+
 
 @mcp.tool()
 def get_getty_hierarchy(id_or_uri: str, depth: int = 1) -> dict:
@@ -447,16 +861,34 @@ def get_getty_hierarchy(id_or_uri: str, depth: int = 1) -> dict:
 
     Returns
     -------
-    dict with: id, uri, vocab, prefLabel, broaderTerms, narrowerTerms.
-    Each term entry has: id, label, uri.
+    dict with: id, uri, vocab, vocabName, prefLabel, depth, broaderTerms,
+    narrowerTerms, and — at depth 2 — fetches and, when the walk was cut
+    short, truncated: true. Term entries carry id, label and uri, and a term
+    whose own terms were fetched carries them under the same key. A record
+    that resolved no preferred label passes its warning through.
+
+    TGN results also carry hierarchyNote and mark the preferred parent with
+    preferredParent: true. Places carry no narrower terms of their own, so
+    the narrowerTerms list is always empty for a TGN record.
 
     Notes
     -----
-    Depth > 1 requires additional network calls (one per level).
-    TGN hierarchy is very deep — depth=1 is usually sufficient.
+    Depth 2 fetches one record per related term. The whole operation has a
+    single budget of 20 record fetches including the root record, spent in
+    payload order — every broader term first, then every narrower term. A
+    record already visited is never fetched twice, so a self-referencing or
+    cyclic hierarchy terminates instead of looping.
+
+    TGN hierarchy is very deep and the LOD endpoint does not inline child
+    places — depth=1 is usually sufficient.
     """
     depth = max(1, min(depth, 2))
-    record = get_getty_record(id_or_uri)
+    uri, _vocab = _normalise_uri(id_or_uri)
+
+    # The root fetch is part of the budget, so depth=2 can never exceed
+    # HIERARCHY_FETCH_BUDGET network calls however large the hierarchy is.
+    walk = {"remaining": HIERARCHY_FETCH_BUDGET - 1, "fetches": 1, "stopped": False}
+    record = get_getty_record(uri)
     if "error" in record:
         return record
 
@@ -470,20 +902,28 @@ def get_getty_hierarchy(id_or_uri: str, depth: int = 1) -> dict:
         "broaderTerms":  record.get("broaderTerms", []),
         "narrowerTerms": record.get("narrowerTerms", []),
     }
+    if "hierarchyNote" in record:
+        result["hierarchyNote"] = record["hierarchyNote"]
+    if "warning" in record:
+        result["warning"] = record["warning"]
 
-    # If depth=2, fetch one level deeper for each broader/narrower term
     if depth == 2:
-        for term in result["broaderTerms"]:
-            if term.get("uri"):
-                parent = get_getty_record(term["uri"])
-                if "error" not in parent:
-                    term["broaderTerms"] = parent.get("broaderTerms", [])
-
-        for term in result["narrowerTerms"][:10]:  # limit to avoid excessive calls
-            if term.get("uri"):
-                child = get_getty_record(term["uri"])
-                if "error" not in child:
-                    term["narrowerTerms"] = child.get("narrowerTerms", [])
+        visited = {_ref_uri(uri)}
+        for key in ("broaderTerms", "narrowerTerms"):
+            for term in result[key]:
+                term_uri = _ref_uri(term.get("uri"))
+                if not term_uri or term_uri in visited:
+                    continue
+                visited.add(term_uri)
+                deeper = _walk_fetch(term_uri, walk)
+                if deeper is None:
+                    continue
+                children = deeper.get(key)
+                if children:
+                    term[key] = children
+        result["fetches"] = walk["fetches"]
+        if walk["stopped"]:
+            result["truncated"] = True
 
     return result
 

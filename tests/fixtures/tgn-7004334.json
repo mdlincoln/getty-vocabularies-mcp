@@ -1,0 +1,287 @@
+{
+ "@context": "https://linked.art/ns/v1/linked-art.json",
+ "_label": "Nürnberg",
+ "classified_as": [
+  {
+   "_label": "inhabited places",
+   "classified_as": [
+    {
+     "_label": "place types",
+     "id": "http://vocab.getty.edu/aat/300435109",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300008347",
+   "type": "Type"
+  },
+  {
+   "_label": "cities",
+   "classified_as": [
+    {
+     "_label": "place types",
+     "id": "http://vocab.getty.edu/aat/300435109",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300008389",
+   "type": "Type"
+  },
+  {
+   "_label": "imperial cities",
+   "classified_as": [
+    {
+     "_label": "place types",
+     "id": "http://vocab.getty.edu/aat/300435109",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300387239",
+   "type": "Type"
+  },
+  {
+   "_label": "educational centers (buildings)",
+   "classified_as": [
+    {
+     "_label": "place types",
+     "id": "http://vocab.getty.edu/aat/300435109",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300264742",
+   "type": "Type"
+  },
+  {
+   "_label": "commercial centers (inhabited places)",
+   "classified_as": [
+    {
+     "_label": "place types",
+     "id": "http://vocab.getty.edu/aat/300435109",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300387512",
+   "type": "Type"
+  },
+  {
+   "_label": "cultural centers (buildings)",
+   "classified_as": [
+    {
+     "_label": "place types",
+     "id": "http://vocab.getty.edu/aat/300435109",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300005135",
+   "type": "Type"
+  },
+  {
+   "_label": "political centers",
+   "classified_as": [
+    {
+     "_label": "place types",
+     "id": "http://vocab.getty.edu/aat/300435109",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300387320",
+   "type": "Type"
+  },
+  {
+   "_label": "industrial centers (inhabited places)",
+   "classified_as": [
+    {
+     "_label": "place types",
+     "id": "http://vocab.getty.edu/aat/300435109",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300387302",
+   "type": "Type"
+  }
+ ],
+ "id": "http://vocab.getty.edu/tgn/7004334",
+ "identified_by": [
+  {
+   "classified_as": [
+    {
+     "_label": "names",
+     "id": "http://vocab.getty.edu/aat/300404650",
+     "type": "Type"
+    },
+    {
+     "_label": "preferred term",
+     "id": "http://vocab.getty.edu/aat/300404670",
+     "type": "Type"
+    }
+   ],
+   "content": "Nürnberg",
+   "id": "http://vocab.getty.edu/tgn/term/40784-de",
+   "language": [
+    {
+     "_label": "de",
+     "id": "http://vocab.getty.edu/language/de",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "names",
+     "id": "http://vocab.getty.edu/aat/300404650",
+     "type": "Type"
+    }
+   ],
+   "content": "Nuremberg",
+   "id": "http://vocab.getty.edu/tgn/term/140572-en",
+   "language": [
+    {
+     "_label": "en",
+     "id": "http://vocab.getty.edu/language/en",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "names",
+     "id": "http://vocab.getty.edu/aat/300404650",
+     "type": "Type"
+    }
+   ],
+   "content": "Noremberg",
+   "id": "http://vocab.getty.edu/tgn/term/331855-de",
+   "language": [
+    {
+     "_label": "de",
+     "id": "http://vocab.getty.edu/language/de",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "names",
+     "id": "http://vocab.getty.edu/aat/300404650",
+     "type": "Type"
+    }
+   ],
+   "content": "Nurenberg",
+   "id": "http://vocab.getty.edu/tgn/term/1001325733",
+   "type": "Name"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "names",
+     "id": "http://vocab.getty.edu/aat/300404650",
+     "type": "Type"
+    }
+   ],
+   "content": "Nuremburg",
+   "id": "http://vocab.getty.edu/tgn/term/1001325731",
+   "type": "Name"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "names",
+     "id": "http://vocab.getty.edu/aat/300404650",
+     "type": "Type"
+    }
+   ],
+   "content": "Nurenburg",
+   "id": "http://vocab.getty.edu/tgn/term/1001325732",
+   "type": "Name"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "names",
+     "id": "http://vocab.getty.edu/aat/300404650",
+     "type": "Type"
+    }
+   ],
+   "content": "נירנברג",
+   "id": "http://vocab.getty.edu/tgn/term/1005697380-he",
+   "language": [
+    {
+     "_label": "he",
+     "id": "http://vocab.getty.edu/language/he",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "names",
+     "id": "http://vocab.getty.edu/aat/300404650",
+     "type": "Type"
+    },
+    {
+     "_label": "historical term",
+     "id": "http://vocab.getty.edu/aat/300449151",
+     "type": "Type"
+    }
+   ],
+   "content": "Nuremberga",
+   "id": "http://vocab.getty.edu/tgn/term/1002203005",
+   "type": "Name"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "GeoJSON Coordinate Point",
+     "id": "http://geojson.org",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/tgn/geometry/7004334",
+   "type": "crm:E47_Spatial_Coordinates",
+   "value": "[11.068333,49.447778]"
+  }
+ ],
+ "part_of": [
+  {
+   "_label": "Bavaria",
+   "classified_as": [
+    {
+     "_label": "preferred parent",
+     "id": "http://vocab.getty.edu/aat/300449152",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/tgn/7003669",
+   "type": "Place"
+  }
+ ],
+ "subject_of": [
+  {
+   "classified_as": [
+    {
+     "_label": "descriptive note",
+     "id": "http://vocab.getty.edu/aat/300435416",
+     "type": "Type"
+    }
+   ],
+   "content": "Situated on the Pegnitz River in Bavaria, Germany, the city of Nürnberg is the second-largest city in Bavaria. Founded around a castle in the mid-11th century, it was a thriving commercial link to Italy from the 12th century. It received its first charter in 1219 and quickly became a free imperial city. It flourished as a cultural center of northern Europe from the 15th century. The artist Albrecht Dürer was born there in 1471. It declined after the Thirty Years' War in the 17th century, and came under the rule of Bavaria in 1806. With the industrial revolution its fortunes revived. It was the focus of Hitler's political and industrial effort in the 1930s and 1940s, and as such was heavily bombed by the Allies in World War II. The post-war trials of Nazi war criminals were held here. Much of its historic architecture was destroyed by the bombing, but some of its has been restored or rebuilt, notable the old imperial castle, the Renaissance town hall, the Gothic churches of St. Lorenz and St. Sebald, and the Hospital Church of the Holy Ghost. Its major industries include the manufacture of mechanical and optical equipment, motor vehicles, textiles, and toys, for which it is a world center. It is a transportation center, with links by highway, canal, and air, and an educational center, with several institutions of higher learning, notably the Academy of Arts founded in 1662, and the Ohm Polytechnic Institute. Other institutes include the 600 year-old library and the Pegnesische Blumenorden, a literary society founded in 1644. The Germanisches Nationalmuseum houses a complete collection of Dürer prints. The 2004 estimated population was 495,600. ",
+   "id": "http://vocab.getty.edu/tgn/scopeNote/49616",
+   "language": [
+    {
+     "_label": "en",
+     "id": "http://vocab.getty.edu/language/en",
+     "type": "Language"
+    }
+   ],
+   "type": "LinguisticObject"
+  }
+ ],
+ "type": "Place"
+}

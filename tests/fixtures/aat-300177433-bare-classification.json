@@ -1,0 +1,356 @@
+{
+ "@context": "https://linked.art/ns/v1/linked-art.json",
+ "_label": "frescoes (paintings)",
+ "broader": [
+  {
+   "_label": "<paintings by material or technique>",
+   "id": "http://vocab.getty.edu/aat/300033701",
+   "type": "Type"
+  }
+ ],
+ "equivalent": [
+  {
+   "_label": "frescoes (paintings)",
+   "id": "http://www.wikidata.org/entity/Q22669139",
+   "type": "Type"
+  }
+ ],
+ "id": "http://vocab.getty.edu/aat/300177433",
+ "identified_by": [
+  {
+   "alternative": [
+    {
+     "content": "frescoes (paintings)",
+     "id": "http://vocab.getty.edu/aat/300177433#qualified-1000177433-en",
+     "language": [
+      {
+       "_label": "en",
+       "id": "http://vocab.getty.edu/language/en",
+       "type": "Language"
+      }
+     ],
+     "type": "Name"
+    }
+   ],
+   "classified_as": [
+    "http://vocab.getty.edu/term/type/Descriptor",
+    "http://vocab.getty.edu/term/POS/BothSingularAndPlural",
+    "http://vocab.getty.edu/aat/300404670"
+   ],
+   "content": "frescoes",
+   "id": "http://vocab.getty.edu/aat/term/1000177433-en",
+   "language": [
+    {
+     "_label": "en",
+     "id": "http://vocab.getty.edu/language/en",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "alternative": [
+    {
+     "content": "رسم جداري",
+     "id": "http://vocab.getty.edu/aat/300177433#qualified-1000914595-ar",
+     "language": [
+      {
+       "_label": "ar",
+       "id": "http://vocab.getty.edu/language/ar",
+       "type": "Language"
+      }
+     ],
+     "type": "Name"
+    }
+   ],
+   "classified_as": [
+    "http://vocab.getty.edu/term/type/Descriptor"
+   ],
+   "content": "رسم جداري",
+   "id": "http://vocab.getty.edu/aat/term/1000914595-ar",
+   "language": [
+    {
+     "_label": "ar",
+     "id": "http://vocab.getty.edu/language/ar",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "alternative": [
+    {
+     "content": "fresco's (schilderingen)",
+     "id": "http://vocab.getty.edu/aat/300177433#qualified-1000495158-nl",
+     "language": [
+      {
+       "_label": "nl",
+       "id": "http://vocab.getty.edu/language/nl",
+       "type": "Language"
+      }
+     ],
+     "type": "Name"
+    }
+   ],
+   "classified_as": [
+    "http://vocab.getty.edu/term/type/Descriptor"
+   ],
+   "content": "fresco's",
+   "id": "http://vocab.getty.edu/aat/term/1000495158-nl",
+   "language": [
+    {
+     "_label": "nl",
+     "id": "http://vocab.getty.edu/language/nl",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "alternative": [
+    {
+     "content": "Freskomalerei (Gemälde)",
+     "id": "http://vocab.getty.edu/aat/300177433#qualified-1000658133-de",
+     "language": [
+      {
+       "_label": "de",
+       "id": "http://vocab.getty.edu/language/de",
+       "type": "Language"
+      }
+     ],
+     "type": "Name"
+    }
+   ],
+   "classified_as": [
+    "http://vocab.getty.edu/term/type/AlternateDescriptor",
+    "http://vocab.getty.edu/term/POS/SingularNoun"
+   ],
+   "content": "Freskomalerei",
+   "id": "http://vocab.getty.edu/aat/term/1000658133-de",
+   "language": [
+    {
+     "_label": "de",
+     "id": "http://vocab.getty.edu/language/de",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "alternative": [
+    {
+     "content": "affresco (dipinto)",
+     "id": "http://vocab.getty.edu/aat/300177433#qualified-1000382257-it",
+     "language": [
+      {
+       "_label": "it",
+       "id": "http://vocab.getty.edu/language/it",
+       "type": "Language"
+      }
+     ],
+     "type": "Name"
+    }
+   ],
+   "classified_as": [
+    "http://vocab.getty.edu/term/type/AlternateDescriptor"
+   ],
+   "content": "affresco",
+   "id": "http://vocab.getty.edu/aat/term/1000382257-it",
+   "language": [
+    {
+     "_label": "it",
+     "id": "http://vocab.getty.edu/language/it",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "alternative": [
+    {
+     "content": "afrescos",
+     "id": "http://vocab.getty.edu/aat/300177433#qualified-1000849895-pt",
+     "language": [
+      {
+       "_label": "pt",
+       "id": "http://vocab.getty.edu/language/pt",
+       "type": "Language"
+      }
+     ],
+     "type": "Name"
+    }
+   ],
+   "classified_as": [
+    "http://vocab.getty.edu/term/type/Descriptor",
+    "http://vocab.getty.edu/term/POS/PluralNoun"
+   ],
+   "content": "afrescos",
+   "id": "http://vocab.getty.edu/aat/term/1000849895-pt",
+   "language": [
+    {
+     "_label": "pt",
+     "id": "http://vocab.getty.edu/language/pt",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "alternative": [
+    {
+     "content": "frescos",
+     "id": "http://vocab.getty.edu/aat/300177433#qualified-1000441718-es",
+     "language": [
+      {
+       "_label": "es",
+       "id": "http://vocab.getty.edu/language/es",
+       "type": "Language"
+      }
+     ],
+     "type": "Name"
+    }
+   ],
+   "classified_as": [
+    "http://vocab.getty.edu/term/type/Descriptor",
+    "http://vocab.getty.edu/term/POS/PluralNoun"
+   ],
+   "content": "frescos",
+   "id": "http://vocab.getty.edu/aat/term/1000441718-es",
+   "language": [
+    {
+     "_label": "es",
+     "id": "http://vocab.getty.edu/language/es",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "alternative": [
+    {
+     "content": "frescoes (paintings)",
+     "id": "http://vocab.getty.edu/aat/300177433#qualified-1000931673-en",
+     "language": [
+      {
+       "_label": "en",
+       "id": "http://vocab.getty.edu/language/en",
+       "type": "Language"
+      }
+     ],
+     "type": "Name"
+    }
+   ],
+   "classified_as": [
+    "http://vocab.getty.edu/term/type/AlternateDescriptor"
+   ],
+   "content": "frescoes (paintings)",
+   "id": "http://vocab.getty.edu/aat/term/1000931673-en",
+   "language": [
+    {
+     "_label": "en",
+     "id": "http://vocab.getty.edu/language/en",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "classified_as": [
+    "http://vocab.getty.edu/aat/300404629"
+   ],
+   "content": "300177433",
+   "id": "http://vocab.getty.edu/aat/300177433",
+   "type": "Identifier"
+  }
+ ],
+ "la:related_from_by": [
+  {
+   "classified_as": [
+    "http://vocab.getty.edu/aat/relationships/2325"
+   ],
+   "id": "http://vocab.getty.edu/aat/relationships/2325-300177433-300386202",
+   "la:relates_to": {
+    "id": "http://vocab.getty.edu/aat/300386202"
+   },
+   "type": "la:Relationship"
+  },
+  {
+   "classified_as": [
+    "http://vocab.getty.edu/aat/relationships/2501"
+   ],
+   "id": "http://vocab.getty.edu/aat/relationships/2501-300177433-300048627",
+   "la:relates_to": {
+    "id": "http://vocab.getty.edu/aat/300048627"
+   },
+   "type": "la:Relationship"
+  },
+  {
+   "classified_as": [
+    "http://vocab.getty.edu/aat/relationships/2501"
+   ],
+   "id": "http://vocab.getty.edu/aat/relationships/2501-300177433-300048626",
+   "la:relates_to": {
+    "id": "http://vocab.getty.edu/aat/300048626"
+   },
+   "type": "la:Relationship"
+  },
+  {
+   "classified_as": [
+    "http://vocab.getty.edu/aat/relationships/2806"
+   ],
+   "id": "http://vocab.getty.edu/aat/relationships/2806-300177433-300034464",
+   "la:relates_to": {
+    "id": "http://vocab.getty.edu/aat/300034464"
+   },
+   "type": "la:Relationship"
+  }
+ ],
+ "subject_of": [
+  {
+   "classified_as": [
+    "http://vocab.getty.edu/aat/300435416"
+   ],
+   "content": "Paintings made by the technique of fresco painting, which is a mural painting technique in which permanent pigments, dispersed in water, are painted on freshly laid lime plaster.",
+   "id": "http://vocab.getty.edu/aat/scopeNote/33535",
+   "language": [
+    {
+     "_label": "en",
+     "id": "http://vocab.getty.edu/language/en",
+     "type": "Language"
+    }
+   ],
+   "type": "LinguisticObject"
+  },
+  {
+   "classified_as": [
+    "http://vocab.getty.edu/aat/300435416"
+   ],
+   "content": "Schilderingen vervaardigd met hulp van de frescotechniek, een muurschildertechniek waarbij in water opgeloste, permanente pigmenten op een natte laag pleisterkalk worden aangebracht.",
+   "id": "http://vocab.getty.edu/aat/scopeNote/91245",
+   "language": [
+    {
+     "_label": "nl",
+     "id": "http://vocab.getty.edu/language/nl",
+     "type": "Language"
+    }
+   ],
+   "type": "LinguisticObject"
+  },
+  {
+   "classified_as": [
+    "http://vocab.getty.edu/aat/300435416"
+   ],
+   "content": "Pinturas realizadas por la técnica de pintura al fresco, que es una técnica de pintura mural en que pigmentos permanentes dispersos en agua, son pintados en cal de yeso fresca.",
+   "id": "http://vocab.getty.edu/aat/scopeNote/71227",
+   "language": [
+    {
+     "_label": "es",
+     "id": "http://vocab.getty.edu/language/es",
+     "type": "Language"
+    }
+   ],
+   "type": "LinguisticObject"
+  }
+ ],
+ "type": "Type"
+}

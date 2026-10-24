@@ -1,0 +1,430 @@
+{
+ "@context": "https://linked.art/ns/v1/linked-art.json",
+ "_label": "<paintings by material or technique>",
+ "broader": [
+  {
+   "_label": "paintings (visual works)",
+   "id": "http://vocab.getty.edu/aat/300033618",
+   "type": "Type"
+  }
+ ],
+ "equivalent": [
+  {
+   "_label": "<paintings by material or technique>",
+   "id": "http://www.wikidata.org/entity/Q56148139",
+   "type": "Type"
+  }
+ ],
+ "id": "http://vocab.getty.edu/aat/300033701",
+ "identified_by": [
+  {
+   "alternative": [
+    {
+     "content": "<paintings by material or technique>",
+     "id": "http://vocab.getty.edu/aat/300033701#qualified-1000033701-en",
+     "language": [
+      {
+       "_label": "en",
+       "id": "http://vocab.getty.edu/language/en",
+       "type": "Language"
+      }
+     ],
+     "type": "Name"
+    }
+   ],
+   "classified_as": [
+    {
+     "_label": "Descriptor",
+     "id": "http://vocab.getty.edu/term/type/Descriptor",
+     "type": "Type"
+    },
+    {
+     "_label": "neuter adjectival",
+     "id": "http://vocab.getty.edu/term/POS/NeuterAdjectival",
+     "type": "Type"
+    },
+    {
+     "_label": "preferred term",
+     "id": "http://vocab.getty.edu/aat/300404670",
+     "type": "Type"
+    }
+   ],
+   "content": "paintings by material or technique",
+   "id": "http://vocab.getty.edu/aat/term/1000033701-en",
+   "language": [
+    {
+     "_label": "en",
+     "id": "http://vocab.getty.edu/language/en",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "alternative": [
+    {
+     "content": "<schilderingen naar materiaal of techniek>",
+     "id": "http://vocab.getty.edu/aat/300033701#qualified-1000480791-nl",
+     "language": [
+      {
+       "_label": "nl",
+       "id": "http://vocab.getty.edu/language/nl",
+       "type": "Language"
+      }
+     ],
+     "type": "Name"
+    }
+   ],
+   "classified_as": [
+    {
+     "_label": "Descriptor",
+     "id": "http://vocab.getty.edu/term/type/Descriptor",
+     "type": "Type"
+    }
+   ],
+   "content": "schilderingen naar materiaal of techniek",
+   "id": "http://vocab.getty.edu/aat/term/1000480791-nl",
+   "language": [
+    {
+     "_label": "nl",
+     "id": "http://vocab.getty.edu/language/nl",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "alternative": [
+    {
+     "content": "<peintures selon le matériau ou la technique>",
+     "id": "http://vocab.getty.edu/aat/300033701#qualified-1000314465-fr",
+     "language": [
+      {
+       "_label": "fr",
+       "id": "http://vocab.getty.edu/language/fr",
+       "type": "Language"
+      }
+     ],
+     "type": "Name"
+    }
+   ],
+   "classified_as": [
+    {
+     "_label": "Descriptor",
+     "id": "http://vocab.getty.edu/term/type/Descriptor",
+     "type": "Type"
+    },
+    {
+     "_label": "neuter adjectival",
+     "id": "http://vocab.getty.edu/term/POS/NeuterAdjectival",
+     "type": "Type"
+    }
+   ],
+   "content": "peintures selon le matériau ou la technique",
+   "id": "http://vocab.getty.edu/aat/term/1000314465-fr",
+   "language": [
+    {
+     "_label": "fr",
+     "id": "http://vocab.getty.edu/language/fr",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "alternative": [
+    {
+     "content": "<Malereien nach Material oder Technik>",
+     "id": "http://vocab.getty.edu/aat/300033701#qualified-1000604960-de",
+     "language": [
+      {
+       "_label": "de",
+       "id": "http://vocab.getty.edu/language/de",
+       "type": "Language"
+      }
+     ],
+     "type": "Name"
+    }
+   ],
+   "classified_as": [
+    {
+     "_label": "Descriptor",
+     "id": "http://vocab.getty.edu/term/type/Descriptor",
+     "type": "Type"
+    },
+    {
+     "_label": "Plural Noun",
+     "id": "http://vocab.getty.edu/term/POS/PluralNoun",
+     "type": "Type"
+    }
+   ],
+   "content": "Malereien nach Material oder Technik",
+   "id": "http://vocab.getty.edu/aat/term/1000604960-de",
+   "language": [
+    {
+     "_label": "de",
+     "id": "http://vocab.getty.edu/language/de",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "alternative": [
+    {
+     "content": "<pinturas por material ou técnica>",
+     "id": "http://vocab.getty.edu/aat/300033701#qualified-1000882658-pt",
+     "language": [
+      {
+       "_label": "pt",
+       "id": "http://vocab.getty.edu/language/pt",
+       "type": "Language"
+      }
+     ],
+     "type": "Name"
+    }
+   ],
+   "classified_as": [
+    {
+     "_label": "Descriptor",
+     "id": "http://vocab.getty.edu/term/type/Descriptor",
+     "type": "Type"
+    },
+    {
+     "_label": "Plural Noun",
+     "id": "http://vocab.getty.edu/term/POS/PluralNoun",
+     "type": "Type"
+    }
+   ],
+   "content": "pinturas por material ou técnica",
+   "id": "http://vocab.getty.edu/aat/term/1000882658-pt",
+   "language": [
+    {
+     "_label": "pt",
+     "id": "http://vocab.getty.edu/language/pt",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "alternative": [
+    {
+     "content": "<pinturas por material o técnica>",
+     "id": "http://vocab.getty.edu/aat/300033701#qualified-1000427705-es",
+     "language": [
+      {
+       "_label": "es",
+       "id": "http://vocab.getty.edu/language/es",
+       "type": "Language"
+      }
+     ],
+     "type": "Name"
+    }
+   ],
+   "classified_as": [
+    {
+     "_label": "Descriptor",
+     "id": "http://vocab.getty.edu/term/type/Descriptor",
+     "type": "Type"
+    },
+    {
+     "_label": "neuter adjectival",
+     "id": "http://vocab.getty.edu/term/POS/NeuterAdjectival",
+     "type": "Type"
+    }
+   ],
+   "content": "pinturas por material o técnica",
+   "id": "http://vocab.getty.edu/aat/term/1000427705-es",
+   "language": [
+    {
+     "_label": "es",
+     "id": "http://vocab.getty.edu/language/es",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "alternative": [
+    {
+     "content": "<Gemälde nach Material oder Technik>",
+     "id": "http://vocab.getty.edu/aat/300033701#qualified-1000904012-de",
+     "language": [
+      {
+       "_label": "de",
+       "id": "http://vocab.getty.edu/language/de",
+       "type": "Language"
+      }
+     ],
+     "type": "Name"
+    }
+   ],
+   "classified_as": [
+    {
+     "_label": "Alternate Descriptor",
+     "id": "http://vocab.getty.edu/term/type/AlternateDescriptor",
+     "type": "Type"
+    },
+    {
+     "_label": "Both Singular and Plural",
+     "id": "http://vocab.getty.edu/term/POS/BothSingularAndPlural",
+     "type": "Type"
+    }
+   ],
+   "content": "Gemälde nach Material oder Technik",
+   "id": "http://vocab.getty.edu/aat/term/1000904012-de",
+   "language": [
+    {
+     "_label": "de",
+     "id": "http://vocab.getty.edu/language/de",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "alternative": [
+    {
+     "content": "<pintura por material ou técnica>",
+     "id": "http://vocab.getty.edu/aat/300033701#qualified-1000882659-pt",
+     "language": [
+      {
+       "_label": "pt",
+       "id": "http://vocab.getty.edu/language/pt",
+       "type": "Language"
+      }
+     ],
+     "type": "Name"
+    }
+   ],
+   "classified_as": [
+    {
+     "_label": "Alternate Descriptor",
+     "id": "http://vocab.getty.edu/term/type/AlternateDescriptor",
+     "type": "Type"
+    },
+    {
+     "_label": "Singular Noun",
+     "id": "http://vocab.getty.edu/term/POS/SingularNoun",
+     "type": "Type"
+    }
+   ],
+   "content": "pintura por material ou técnica",
+   "id": "http://vocab.getty.edu/aat/term/1000882659-pt",
+   "language": [
+    {
+     "_label": "pt",
+     "id": "http://vocab.getty.edu/language/pt",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "Getty Vocabularies Identifier",
+     "id": "http://vocab.getty.edu/aat/300404629",
+     "type": "Type"
+    }
+   ],
+   "content": "300033701",
+   "id": "http://vocab.getty.edu/aat/300033701",
+   "type": "Identifier"
+  }
+ ],
+ "narrower": [
+  {
+   "_label": "acrylic paintings (visual works)",
+   "id": "http://vocab.getty.edu/aat/300181918",
+   "type": "Type"
+  },
+  {
+   "_label": "bark paintings",
+   "id": "http://vocab.getty.edu/aat/300264815",
+   "type": "Type"
+  },
+  {
+   "_label": "canvas paintings",
+   "id": "http://vocab.getty.edu/aat/300410350",
+   "type": "Type"
+  },
+  {
+   "_label": "casein paintings (visual works)",
+   "id": "http://vocab.getty.edu/aat/300404909",
+   "type": "Type"
+  },
+  {
+   "_label": "encaustic paintings (visual works)",
+   "id": "http://vocab.getty.edu/aat/300181922",
+   "type": "Type"
+  },
+  {
+   "_label": "finger paintings (visual works)",
+   "id": "http://vocab.getty.edu/aat/300033706",
+   "type": "Type"
+  },
+  {
+   "_label": "fluorescent paintings (visual works)",
+   "id": "http://vocab.getty.edu/aat/300387661",
+   "type": "Type"
+  },
+  {
+   "_label": "frescoes (paintings)",
+   "id": "http://vocab.getty.edu/aat/300177433",
+   "type": "Type"
+  },
+  {
+   "_label": "hide painters",
+   "id": "http://vocab.getty.edu/aat/300420006",
+   "type": "Type"
+  },
+  {
+   "_label": "hide paintings",
+   "id": "http://vocab.getty.edu/aat/300420005",
+   "type": "Type"
+  },
+  {
+   "_label": "ink resist paintings",
+   "id": "http://vocab.getty.edu/aat/300404675",
+   "type": "Type"
+  },
+  {
+   "_label": "ink wash paintings",
+   "id": "http://vocab.getty.edu/aat/300404637",
+   "type": "Type"
+  },
+  {
+   "_label": "oil paintings (visual works)",
+   "id": "http://vocab.getty.edu/aat/300033799",
+   "type": "Type"
+  },
+  {
+   "_label": "sargas (visual works)",
+   "id": "http://vocab.getty.edu/aat/300311289",
+   "type": "Type"
+  },
+  {
+   "_label": "tempera paintings",
+   "id": "http://vocab.getty.edu/aat/300389785",
+   "type": "Type"
+  },
+  {
+   "_label": "theorems (paintings)",
+   "id": "http://vocab.getty.edu/aat/300249221",
+   "type": "Type"
+  },
+  {
+   "_label": "Tüchleins (visual works)",
+   "id": "http://vocab.getty.edu/aat/300410255",
+   "type": "Type"
+  },
+  {
+   "_label": "watercolors (paintings)",
+   "id": "http://vocab.getty.edu/aat/300078925",
+   "type": "Type"
+  }
+ ],
+ "type": "Type"
+}

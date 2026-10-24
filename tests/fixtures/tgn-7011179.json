@@ -1,0 +1,421 @@
+{
+ "@context": "https://linked.art/ns/v1/linked-art.json",
+ "_label": "Siena",
+ "classified_as": [
+  {
+   "_label": "archiepiscopal sees",
+   "classified_as": [
+    {
+     "_label": "place types",
+     "id": "http://vocab.getty.edu/aat/300435109",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300387236",
+   "type": "Type"
+  },
+  {
+   "_label": "inhabited places",
+   "classified_as": [
+    {
+     "_label": "place types",
+     "id": "http://vocab.getty.edu/aat/300435109",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300008347",
+   "type": "Type"
+  },
+  {
+   "_label": "Frankish (culture or style)",
+   "classified_as": [
+    {
+     "_label": "place types",
+     "id": "http://vocab.getty.edu/aat/300435109",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300019478",
+   "type": "Type"
+  },
+  {
+   "_label": "cities",
+   "classified_as": [
+    {
+     "_label": "place types",
+     "id": "http://vocab.getty.edu/aat/300435109",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300008389",
+   "type": "Type"
+  },
+  {
+   "_label": "communes (administrative)",
+   "classified_as": [
+    {
+     "_label": "place types",
+     "id": "http://vocab.getty.edu/aat/300435109",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300387330",
+   "type": "Type"
+  },
+  {
+   "_label": "Etruscan (culture or style)",
+   "classified_as": [
+    {
+     "_label": "place types",
+     "id": "http://vocab.getty.edu/aat/300435109",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300020471",
+   "type": "Type"
+  },
+  {
+   "_label": "countships",
+   "classified_as": [
+    {
+     "_label": "place types",
+     "id": "http://vocab.getty.edu/aat/300435109",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300235540",
+   "type": "Type"
+  },
+  {
+   "_label": "cultural centers (buildings)",
+   "classified_as": [
+    {
+     "_label": "place types",
+     "id": "http://vocab.getty.edu/aat/300435109",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300005135",
+   "type": "Type"
+  },
+  {
+   "_label": "financial centers",
+   "classified_as": [
+    {
+     "_label": "place types",
+     "id": "http://vocab.getty.edu/aat/300435109",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300387284",
+   "type": "Type"
+  },
+  {
+   "_label": "Roman (ancient Italian culture or period)",
+   "classified_as": [
+    {
+     "_label": "place types",
+     "id": "http://vocab.getty.edu/aat/300435109",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300020533",
+   "type": "Type"
+  },
+  {
+   "_label": "World Heritage Sites",
+   "classified_as": [
+    {
+     "_label": "place types",
+     "id": "http://vocab.getty.edu/aat/300435109",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300263063",
+   "type": "Type"
+  },
+  {
+   "_label": "tourist centers",
+   "classified_as": [
+    {
+     "_label": "place types",
+     "id": "http://vocab.getty.edu/aat/300435109",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300387291",
+   "type": "Type"
+  },
+  {
+   "_label": "university centers (inhabited places)",
+   "classified_as": [
+    {
+     "_label": "place types",
+     "id": "http://vocab.getty.edu/aat/300435109",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/aat/300387296",
+   "type": "Type"
+  }
+ ],
+ "id": "http://vocab.getty.edu/tgn/7011179",
+ "identified_by": [
+  {
+   "classified_as": [
+    {
+     "_label": "names",
+     "id": "http://vocab.getty.edu/aat/300404650",
+     "type": "Type"
+    }
+   ],
+   "content": "Siena",
+   "id": "http://vocab.getty.edu/tgn/term/47413-es",
+   "language": [
+    {
+     "_label": "es",
+     "id": "http://vocab.getty.edu/language/es",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "names",
+     "id": "http://vocab.getty.edu/aat/300404650",
+     "type": "Type"
+    }
+   ],
+   "content": "Siena",
+   "id": "http://vocab.getty.edu/tgn/term/47413-fr",
+   "language": [
+    {
+     "_label": "fr",
+     "id": "http://vocab.getty.edu/language/fr",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "names",
+     "id": "http://vocab.getty.edu/aat/300404650",
+     "type": "Type"
+    }
+   ],
+   "content": "Siena",
+   "id": "http://vocab.getty.edu/tgn/term/47413-nl",
+   "language": [
+    {
+     "_label": "nl",
+     "id": "http://vocab.getty.edu/language/nl",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "names",
+     "id": "http://vocab.getty.edu/aat/300404650",
+     "type": "Type"
+    }
+   ],
+   "content": "Siena",
+   "id": "http://vocab.getty.edu/tgn/term/47413-de",
+   "language": [
+    {
+     "_label": "de",
+     "id": "http://vocab.getty.edu/language/de",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "names",
+     "id": "http://vocab.getty.edu/aat/300404650",
+     "type": "Type"
+    }
+   ],
+   "content": "Siena",
+   "id": "http://vocab.getty.edu/tgn/term/47413-it",
+   "language": [
+    {
+     "_label": "it",
+     "id": "http://vocab.getty.edu/language/it",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "names",
+     "id": "http://vocab.getty.edu/aat/300404650",
+     "type": "Type"
+    },
+    {
+     "_label": "preferred term",
+     "id": "http://vocab.getty.edu/aat/300404670",
+     "type": "Type"
+    }
+   ],
+   "content": "Siena",
+   "id": "http://vocab.getty.edu/tgn/term/47413-en",
+   "language": [
+    {
+     "_label": "en",
+     "id": "http://vocab.getty.edu/language/en",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "names",
+     "id": "http://vocab.getty.edu/aat/300404650",
+     "type": "Type"
+    },
+    {
+     "_label": "historical term",
+     "id": "http://vocab.getty.edu/aat/300449151",
+     "type": "Type"
+    }
+   ],
+   "content": "Saena Julia",
+   "id": "http://vocab.getty.edu/tgn/term/141380-la",
+   "language": [
+    {
+     "_label": "la",
+     "id": "http://vocab.getty.edu/language/la",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "names",
+     "id": "http://vocab.getty.edu/aat/300404650",
+     "type": "Type"
+    },
+    {
+     "_label": "historical term",
+     "id": "http://vocab.getty.edu/aat/300449151",
+     "type": "Type"
+    }
+   ],
+   "content": "Sena",
+   "id": "http://vocab.getty.edu/tgn/term/181414-ett",
+   "language": [
+    {
+     "_label": "ett",
+     "id": "http://vocab.getty.edu/language/ett",
+     "type": "Language"
+    }
+   ],
+   "type": "Name"
+  },
+  {
+   "classified_as": [
+    {
+     "_label": "GeoJSON Coordinate Point",
+     "id": "http://geojson.org",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/tgn/geometry/7011179",
+   "type": "crm:E47_Spatial_Coordinates",
+   "value": "[11.33,43.318]"
+  }
+ ],
+ "la:related_from_by": [
+  {
+   "classified_as": [
+    {
+     "_label": "ally of - nation",
+     "id": "http://vocab.getty.edu/tgn/relationships/3301",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/tgn/relationships/3301-7011179-7006072",
+   "la:relates_to": {
+    "id": "http://vocab.getty.edu/tgn/7006072"
+   },
+   "type": "la:Relationship"
+  },
+  {
+   "classified_as": [
+    "http://vocab.getty.edu/tgn/relationships/3301"
+   ],
+   "id": "http://vocab.getty.edu/tgn/relationships/3301-7011179-7005060",
+   "la:relates_to": {
+    "id": "http://vocab.getty.edu/tgn/7005060"
+   },
+   "type": "la:Relationship"
+  },
+  {
+   "classified_as": [
+    "http://vocab.getty.edu/tgn/relationships/3301"
+   ],
+   "id": "http://vocab.getty.edu/tgn/relationships/3301-7011179-7006082",
+   "la:relates_to": {
+    "id": "http://vocab.getty.edu/tgn/7006082"
+   },
+   "type": "la:Relationship"
+  }
+ ],
+ "part_of": [
+  {
+   "_label": "Siena",
+   "classified_as": [
+    {
+     "_label": "preferred parent",
+     "id": "http://vocab.getty.edu/aat/300449152",
+     "type": "Type"
+    }
+   ],
+   "id": "http://vocab.getty.edu/tgn/7003168",
+   "type": "Place"
+  },
+  {
+   "_label": "Etruria",
+   "id": "http://vocab.getty.edu/tgn/7024113",
+   "type": "Place"
+  }
+ ],
+ "subject_of": [
+  {
+   "classified_as": [
+    {
+     "_label": "descriptive note",
+     "id": "http://vocab.getty.edu/aat/300435416",
+     "type": "Type"
+    }
+   ],
+   "content": "Siena was founded as an Etruscan hill town, possibly by the Saina tribe; later it was the Roman city of Sena Julia (3rd century BCE). It flourished under the Lombard kings (6th century CE) and was a Medieval self-governing commune (constitution dates to 1179). Siena was a Medieval seat of pro-imperial Ghibelline power and was an economic and territorial rival of Guelf (anti-imperial) Florence. The population was ravaged by the Black Death (bubonic plague) in 1348. Siena was ruled by Charles of Anjou in the 13th century, the Visconti of Milan in the early 15th century, and the Medici of Florence after 1557. Historic core named an UNESCO World Heritage Site in 1995.",
+   "id": "http://vocab.getty.edu/tgn/scopeNote/41087",
+   "language": [
+    {
+     "_label": "en",
+     "id": "http://vocab.getty.edu/language/en",
+     "type": "Language"
+    }
+   ],
+   "type": "LinguisticObject"
+  }
+ ],
+ "type": "Place"
+}

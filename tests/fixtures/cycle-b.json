@@ -1,0 +1,34 @@
+{
+ "@context": "https://linked.art/ns/v1/linked-art.json",
+ "_label": "cycle b",
+ "broader": [
+  {
+   "_label": "cycle a",
+   "id": "http://vocab.getty.edu/aat/900000001",
+   "type": "Type"
+  }
+ ],
+ "id": "http://vocab.getty.edu/aat/900000002",
+ "identified_by": [
+  {
+   "classified_as": [
+    {
+     "_label": "preferred term",
+     "id": "http://vocab.getty.edu/aat/300404670",
+     "type": "Type"
+    }
+   ],
+   "content": "cycle b",
+   "id": "http://vocab.getty.edu/aat/term/900000002-en",
+   "type": "Name"
+  }
+ ],
+ "narrower": [
+  {
+   "_label": "cycle b",
+   "id": "http://vocab.getty.edu/aat/900000002",
+   "type": "Type"
+  }
+ ],
+ "type": "Type"
+}
